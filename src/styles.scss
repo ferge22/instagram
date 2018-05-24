@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.spacer{
+  flex:1 1 auto;
+}
+
+body{
+  margin: 0 auto;
+}
+
+.a-icon{
+  cursor: pointer;
+  padding: 0 14px;
+}
+
+.full-width{
+  width: 100%;
+}
+
+.is-danger{
+  color: red;
+}
+
+.sm-text{
+  font-size: 15px;
+}
+
+.loading{
+  font-size: 50px;
+  color: grey;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+#hidden-from-screen{
+  opacity: 0;
+  width: 0px;
+  visibility: hidden;
+}
+
+.postdialog mat-dialog-container{
+  padding: 0;
+  max-height: 40vw;
+}

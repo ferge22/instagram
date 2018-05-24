@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="imigas">
+    <img src="{{data.photoURL}}" alt="">
+  </div>
+  <div class="desinysdiv">
+      <div class="desinysinner">
+        <h4>{{ data.description }}</h4>
+        <div class="icons">
+          <mat-icon (click)="likePost(value)">thumb_up</mat-icon>
+          <mat-icon (click)="dislikePost()">thumb_down</mat-icon>
+        </div>
+        <div class="likenaddislike">
+          <span>Likes</span><span>{{ likes }}</span>
+        </div>
+      </div>
+
+       <!-- <p>{{ data.user.displayName }}</p>
+       <img src="{{data.user.photoURL}}" alt=""> -->
+
+      <div class="comments">
+        <mat-form-field class="example-full-width">
+          <textarea [(ngModel)] ="user.comment" matInput placeholder="Leave a comment"></textarea>
+        </mat-form-field>
+        <button mat-button color="primary" (click)="sendComment()">Send</button>
+      </div>
+
+      <div class="commentscontainer">
+        <div class="comment" *ngFor="let com of comments ">{{ com.comment }}</div>
+      </div>
+  </div>
+</div>

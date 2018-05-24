@@ -1,0 +1,15 @@
+<div class="dashboardcontainer" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="1%">
+  <mat-card class="matcardas" fxFlex="30" *ngFor="let post of posts | async">
+    <div class="container">
+        <div (click)="openDialog(post)">
+          <img src="{{post.photoURL}}" alt="" >
+          <h4>{{ post.description }}</h4>
+        </div>
+          <div class="namenadcssinnder">
+            <span>By: </span>
+            <img *ngIf="(auth.user | async)" src="{{(auth.user | async)?.photoURL}}" alt="">
+            <a class="namecss" [routerLink]="['../', 'profile', post.user_uid]">{{(post.user | async)?.displayName}}</a>
+          </div>
+      </div>
+  </mat-card>
+</div>

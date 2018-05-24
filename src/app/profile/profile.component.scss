@@ -1,0 +1,30 @@
+.profile-container{
+  max-width: 600px;
+  margin: 20px auto;
+  .profile-picture{
+    display: inline-block;
+    max-width: 40%;
+    text-align: center;
+    img{
+      border-radius: 50%;
+      max-width: 120px;
+      display: block;
+      margin: 10px auto;
+    }
+    
+  }
+  .profile-name{
+    position: absolute;
+    display: inline-block;
+    max-width: 60%;
+    margin: 40px 20px;
+
+    h3{
+      display: inline-block;
+    }
+
+    button{
+      display: inline-block;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span routerLink="/" *ngIf='!(auth.user | async)'>INSTAGRAM</span>
+    <span routerLink="/dashboard" *ngIf='(auth.user | async)'>Dashback</span>
+    <span class="spacer"></span>
+    <button mat-button class="signup" [routerLink]="['sign-up']" *ngIf='!(auth.user | async)'>Sign Up</button>
+    <button mat-button class="signin" [routerLink]="['sign-in']" *ngIf='!(auth.user | async)'>Sign In</button>
+    <mat-icon [routerLink]="['post', 'new']" *ngIf="(auth.user | async)" class="icon1">add</mat-icon>
+    <div class="namenadimg">
+      <div class="namenadimginner">
+        <img *ngIf="(auth.user | async)" src="{{(auth.user | async)?.photoURL}}" alt="">
+        <span [routerLink]="['profile', (auth.user | async)?.uid]" *ngIf="(auth.user | async)" class="name">{{(auth.user | async)?.displayName}}</span>
+      </div>
+    </div>
+    <mat-icon (click)="signOut()" class="icon" *ngIf='(auth.user | async)'>input</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>

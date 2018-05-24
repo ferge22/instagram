@@ -1,0 +1,44 @@
+<mat-card class="post-container">
+  <mat-horizontal-stepper #stepper="matHorizontalStepper">
+    <mat-step [stepControl]="firstFormGroup">
+      <ng-template matStepLabel>Photo upload</ng-template>
+        <div *ngIf="!post.photoURL" (click)="fileUpload.click()"  class="upload-image">
+          <h2>Click here to upload image</h2>
+            <button mat-mini-fab color="primary">
+              <mat-icon class="">add</mat-icon>
+            </button>
+        </div>
+        <input (change)="detectFile($event)" #fileUpload id="hidden-from-screen" type="file">
+        <img *ngIf="post.photoURL" src="{{ post.photoURL }}" alt="">
+        <div *ngIf="post.photoURL" class="delete-photo">
+          <button (click)="deletePhoto()" mat-mini-fab color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <button mat-button matStepperNext color="primary">Done</button>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <ng-template matStepLabel>Fill your description</ng-template>
+        <div class="example-container">
+          <mat-form-field>
+            <textarea [(ngModel)]="description" matInput placeholder="Whats in your mind?" ></textarea>
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious color="primary">Back</button>
+          <button (click)="uploadDescription()" mat-button matStepperNext color="primary">Done</button>
+        </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel color="primary">Done</ng-template>
+        <img src="{{ post.photoURL }}">
+        <div class="description">
+          <h2> {{ description }} </h2>
+        </div>
+      <div>
+        <button mat-button matStepperPrevious color="primary">Back</button>
+        <button mat-button (click)="submitFinall()" [disabled]="!post.photoURL && description" color="primary">Submit</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</mat-card>

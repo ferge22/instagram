@@ -1,0 +1,28 @@
+<mat-card class="profile-container">
+<div class="profile-picture">
+  <img *ngIf="user" src="{{ user.photoURL }}" alt="">
+  <div *ngIf="user?.uid === (auth.user | async)?.uid">
+    <button type="button" (click)="fileUpload.click()" name="button">Change Photo</button>
+    <input id="hidden-from-screen" (change)="detectFile($event)" #fileUpload type="file" name="" value="">
+  </div>
+</div>
+
+<div class="profile-name">
+  <div class="change-name" *ngIf="!editable">
+    <h3>{{ user?.displayName }}</h3>
+    <button *ngIf="user?.uid === (auth.user | async)?.uid" (click)= "toggleName()" mat-mini-fab color="primary">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+  <div *ngIf="user?.uid === (auth.user | async)?.uid && editable" class="change-name" >
+    <input type="text" [(ngModel)] ="user.displayName" name="" value="">
+    <button (click)="saveName()" mat-mini-fab color="primary">
+      <mat-icon>done</mat-icon>
+    </button>
+  </div>
+</div>
+</mat-card>
+
+<mat-card>
+
+</mat-card>

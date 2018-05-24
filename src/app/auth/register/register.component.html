@@ -1,0 +1,32 @@
+<mat-card class="auth-form">
+  <div class="sign-up-form">
+    <h1>Sign Up</h1>
+    <button mat-button color="primary" type="button" name="button" [routerLink]="['../','sign-in']">Already have account?Sign In</button>
+    <form [formGroup]="userForm" (ngSubmit)='signUp()'>
+
+      <mat-form-field class="full-width">
+        <input matInput type="text" placeholder="name" formControlName="name" required>
+        <div class="sm-text is-danger" *ngIf="formErrors.name">
+          {{ formErrors.name }}
+        </div>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput type="email" placeholder="email" formControlName="email" required>
+        <div class="sm-text is-danger" *ngIf="formErrors.email">
+          {{ formErrors.email }}
+        </div>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput type="password" placeholder="password" formControlName="password" required>
+        <div class="sm-text is-danger" *ngIf="formErrors.password">
+          {{ formErrors.password }}
+        </div>
+      </mat-form-field>
+
+      <button mat-raised-button [disabled]="!userForm.valid" color="primary" type="submit" name="button">Sign Up</button>
+
+    </form>
+  </div>
+</mat-card>
